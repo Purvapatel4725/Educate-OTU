@@ -3,18 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Edu Terminal</title>
+  <title>Hello Dummies</title>
   <style>
-    body {
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      height: 100%;
+      width: 100%;
       background-color: black;
       color: #00ff00;
       font-family: 'Courier New', Courier, monospace;
-      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #terminal-container {
+      width: 100%;
+      max-width: 900px;
       padding: 20px;
     }
     #terminal {
       white-space: pre-wrap;
       overflow-y: auto;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      min-height: 300px;
     }
     .cursor {
       display: inline-block;
@@ -28,10 +44,12 @@
   </style>
 </head>
 <body>
-  <div id="terminal"></div>
+  <div id="terminal-container">
+    <div id="terminal"></div>
+  </div>
   <script>
     const lines = [
-      "Initializing AI Education Portal...",
+      "Initializing AI Education Terminal...",
       "Connecting to Ontario Tech University's dumb student database...",
       "Access granted.",
       "Hello Business Majors... Let's teach you how to use AI efficiently.",
@@ -56,13 +74,13 @@
           i++;
           setTimeout(typeLine, 50);
         } else {
-          cursor.insertAdjacentHTML('beforebegin', '<br>');
+          cursor.insertAdjacentHTML('beforebegin', '\n');
           line++;
           i = 0;
           setTimeout(typeLine, 500);
         }
       } else {
-        cursor.insertAdjacentHTML('beforebegin', '<br><br>[ Press any key to exit ]');
+        cursor.insertAdjacentHTML('beforebegin', '\n\n[ Press any key to exit ]');
       }
     }
 
