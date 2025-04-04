@@ -51,11 +51,32 @@
         opacity: 0.6;
       }
     }
+    .fun-input {
+      margin-top: 20px;
+      display: none;
+    }
+    input {
+      background: black;
+      border: none;
+      border-bottom: 1px solid #00ff00;
+      color: #00ff00;
+      font-size: 1rem;
+      font-family: inherit;
+      width: 100%;
+      padding: 10px 0;
+    }
+    input:focus {
+      outline: none;
+    }
   </style>
 </head>
 <body>
   <div id="terminal-container">
     <div id="terminal"></div>
+    <div class="fun-input">
+      <label for="name">Enter your name:</label><br>
+      <input type="text" id="name" placeholder="e.g., xyzabc">
+    </div>
   </div>
   <script>
     const lines = [
@@ -64,9 +85,9 @@
       "Access granted.",
       "Hello Business Majors... Let's teach you how to use AI efficiently.",
       "Website built by: Purva Patel",
-      "Interface: Hacker Terminal Mode",
       "Status: Under Construction",
-      "Check back soon."
+      "Check back soon.",
+      "Before you go... we need your name!"
     ];
 
     let terminal = document.getElementById('terminal');
@@ -77,6 +98,7 @@
 
     let i = 0;
     let line = 0;
+    let inputShown = false;
 
     function typeLine() {
       if (line < lines.length) {
@@ -91,10 +113,17 @@
           setTimeout(typeLine, 500);
         }
       } else {
-        cursor.insertAdjacentHTML('beforebegin', '\n\n[ Press any key to continue ]');
-        document.addEventListener('keydown', () => {
-          window.location.href = 'https://youtu.be/dQw4w9WgXcQ?si=ShOj-2fzgqAkrmbj';
-        }, { once: true });
+        document.querySelector('.fun-input').style.display = 'block';
+        document.getElementById('name').focus();
+        document.getElementById('name').addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' && this.value.trim() !== '') {
+            let alias = this.value.trim();
+            cursor.insertAdjacentHTML('beforebegin', `\nWelcome, ${alias}.\nInitiating redirection...`);
+            setTimeout(() => {
+              window.location.href = 'https://youtu.be/dQw4w9WgXcQ?si=ShOj-2fzgqAkrmbj';
+            }, 2000);
+          }
+        });
       }
     }
 
