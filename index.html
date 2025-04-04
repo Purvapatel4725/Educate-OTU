@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello Dummies</title>
+  <title>AI Edu Terminal</title>
   <style>
     * {
       box-sizing: border-box;
@@ -19,11 +19,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
     }
     #terminal-container {
       width: 100%;
       max-width: 900px;
       padding: 20px;
+      animation: flicker 0.3s infinite;
     }
     #terminal {
       white-space: pre-wrap;
@@ -41,6 +43,14 @@
     @keyframes blink {
       50% { background-color: transparent; }
     }
+    @keyframes flicker {
+      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+      }
+      20%, 24%, 55% {
+        opacity: 0.6;
+      }
+    }
   </style>
 </head>
 <body>
@@ -54,6 +64,7 @@
       "Access granted.",
       "Hello Business Majors... Let's teach you how to use AI efficiently.",
       "Website built by: Purva Patel",
+      "Interface: Hacker Terminal Mode",
       "Status: Under Construction",
       "Check back soon."
     ];
@@ -80,7 +91,10 @@
           setTimeout(typeLine, 500);
         }
       } else {
-        cursor.insertAdjacentHTML('beforebegin', '\n\n[ Press any key to exit ]');
+        cursor.insertAdjacentHTML('beforebegin', '\n\n[ Press any key to continue ]');
+        document.addEventListener('keydown', () => {
+          window.location.href = 'https://youtu.be/dQw4w9WgXcQ?si=ShOj-2fzgqAkrmbj';
+        }, { once: true });
       }
     }
 
