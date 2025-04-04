@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Edu Terminal</title>
+  <style>
+    body {
+      background-color: black;
+      color: #00ff00;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 20px;
+    }
+    #terminal {
+      white-space: pre-wrap;
+      overflow-y: auto;
+    }
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      background-color: #00ff00;
+      animation: blink 1s step-start infinite;
+    }
+    @keyframes blink {
+      50% { background-color: transparent; }
+    }
+  </style>
+</head>
+<body>
+  <div id="terminal"></div>
+  <script>
+    const lines = [
+      "Initializing AI Education Portal...",
+      "Connecting to Ontario Tech University's dumb student database...",
+      "Access granted.",
+      "Hello Business Majors... Let's teach you how to use AI efficiently.",
+      "Website built by: XYZABC",
+      "Interface: Hacker Terminal Mode",
+      "Status: Under Construction",
+      "Check back soon."
+    ];
+
+    let terminal = document.getElementById('terminal');
+    let cursor = document.createElement('span');
+    cursor.className = 'cursor';
+    cursor.innerHTML = '&nbsp;';
+    terminal.appendChild(cursor);
+
+    let i = 0;
+    let line = 0;
+
+    function typeLine() {
+      if (line < lines.length) {
+        if (i < lines[line].length) {
+          cursor.insertAdjacentText('beforebegin', lines[line][i]);
+          i++;
+          setTimeout(typeLine, 50);
+        } else {
+          cursor.insertAdjacentHTML('beforebegin', '<br>');
+          line++;
+          i = 0;
+          setTimeout(typeLine, 500);
+        }
+      } else {
+        cursor.insertAdjacentHTML('beforebegin', '<br><br>[ Press any key to exit ]');
+      }
+    }
+
+    typeLine();
+  </script>
+</body>
+</html>
