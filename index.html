@@ -3,131 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Edu Terminal</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    html, body {
-      height: 100%;
-      width: 100%;
-      background-color: black;
-      color: #00ff00;
-      font-family: 'Courier New', Courier, monospace;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    #terminal-container {
-      width: 100%;
-      max-width: 900px;
-      padding: 20px;
-      animation: flicker 0.3s infinite;
-    }
-    #terminal {
-      white-space: pre-wrap;
-      overflow-y: auto;
-      font-size: 1.2rem;
-      line-height: 1.6;
-      min-height: 300px;
-    }
-    .cursor {
-      display: inline-block;
-      width: 10px;
-      background-color: #00ff00;
-      animation: blink 1s step-start infinite;
-    }
-    @keyframes blink {
-      50% { background-color: transparent; }
-    }
-    @keyframes flicker {
-      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-        opacity: 1;
-      }
-      20%, 24%, 55% {
-        opacity: 0.6;
-      }
-    }
-    .fun-input {
-      margin-top: 20px;
-      display: none;
-    }
-    input {
-      background: black;
-      border: none;
-      border-bottom: 1px solid #00ff00;
-      color: #00ff00;
-      font-size: 1rem;
-      font-family: inherit;
-      width: 100%;
-      padding: 10px 0;
-    }
-    input:focus {
-      outline: none;
-    }
-  </style>
+  <title>Welcome to Free AI Course - By Purva Patel</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div id="terminal-container">
+    <div id="header">
+      <h1>Welcome to Free AI Course</h1>
+      <div class="subtitle">By Purva Patel</div>
+      <p class="description">For those who clearly don't know how to mask AI usage in coursework and get caught every time</p>
+    </div>
     <div id="terminal"></div>
     <div class="fun-input">
-      <label for="name">Enter your name:</label><br>
-      <input type="text" id="name" placeholder="e.g., xyzabc">
+      <div class="input-group">
+        <label for="name">Enter your name to enroll in the course:</label>
+        <input type="text" id="name" placeholder="e.g., John Doe">
+      </div>
+    </div>
+    <div id="progress-container">
+      <div class="progress-bar">
+        <div class="progress"></div>
+      </div>
+      <div class="progress-text">Initializing course enrollment...</div>
     </div>
   </div>
-  <script>
-    const lines = [
-      "Initializing AI Education Terminal...",
-      "Connecting to Ontario Tech University's dumb student database...",
-      "Access granted.",
-      "Hello Business Majors... Let's teach you how to use AI efficiently.",
-      "Website built by: Purva Patel",
-      "Status: Under Construction",
-      "Check back soon.",
-      "Before you go... we need your name!"
-    ];
-
-    let terminal = document.getElementById('terminal');
-    let cursor = document.createElement('span');
-    cursor.className = 'cursor';
-    cursor.innerHTML = '&nbsp;';
-    terminal.appendChild(cursor);
-
-    let i = 0;
-    let line = 0;
-    let inputShown = false;
-
-    function typeLine() {
-      if (line < lines.length) {
-        if (i < lines[line].length) {
-          cursor.insertAdjacentText('beforebegin', lines[line][i]);
-          i++;
-          setTimeout(typeLine, 50);
-        } else {
-          cursor.insertAdjacentHTML('beforebegin', '\n');
-          line++;
-          i = 0;
-          setTimeout(typeLine, 500);
-        }
-      } else {
-        document.querySelector('.fun-input').style.display = 'block';
-        document.getElementById('name').focus();
-        document.getElementById('name').addEventListener('keydown', function(e) {
-          if (e.key === 'Enter' && this.value.trim() !== '') {
-            let alias = this.value.trim();
-            cursor.insertAdjacentHTML('beforebegin', `\nWelcome, ${alias}.\nInitiating redirection...`);
-            setTimeout(() => {
-              window.location.href = 'https://youtu.be/dQw4w9WgXcQ?si=ShOj-2fzgqAkrmbj';
-            }, 2000);
-          }
-        });
-      }
-    }
-
-    typeLine();
-  </script>
+  <div id="warning" class="hidden">
+    <div class="warning-content">
+      <h2>⚠️ GOTCHA! ⚠️</h2>
+      <p>You fell for the oldest trick in the book!</p>
+      <p>If you're trying to bypass AI detection, you're already caught.</p>
+      <p>Maybe try actually doing your own work next time?</p>
+      <div class="countdown">Redirecting in: <span id="countdown">10</span></div>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>

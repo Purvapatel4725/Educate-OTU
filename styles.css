@@ -1,0 +1,253 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  background-color: #000;
+  color: #0f0;
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(0, 255, 0, 0.1) 0%, transparent 50%),
+    repeating-linear-gradient(0deg, rgba(0, 255, 0, 0.05) 0px, rgba(0, 255, 0, 0.05) 1px, transparent 1px, transparent 2px);
+}
+
+#terminal-container {
+  width: 95%;
+  max-width: 900px;
+  min-width: 280px;
+  padding: 15px;
+  position: relative;
+  border: 1px solid #0f0;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+  animation: flicker 0.3s infinite;
+  margin: 20px auto;
+}
+
+#header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-bottom: 1px solid #0f0;
+}
+
+#header h1 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  margin-bottom: 10px;
+}
+
+.ascii-art {
+  font-size: 8px;
+  line-height: 1;
+  margin-bottom: 10px;
+  color: #0f0;
+  text-shadow: 0 0 5px #0f0;
+}
+
+.subtitle {
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+  color: #0f0;
+  text-shadow: 0 0 5px #0f0;
+}
+
+.description {
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  margin-top: 10px;
+}
+
+#terminal {
+  white-space: pre-wrap;
+  overflow-y: auto;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  line-height: 1.6;
+  min-height: 200px;
+  max-height: 50vh;
+  padding: 10px;
+  border: 1px solid #0f0;
+  margin-bottom: 20px;
+}
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+  background-color: #0f0;
+  animation: blink 1s step-start infinite;
+  box-shadow: 0 0 10px #0f0;
+}
+
+@keyframes blink {
+  50% { background-color: transparent; }
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    opacity: 0.6;
+  }
+}
+
+.fun-input {
+  margin-top: 20px;
+  display: none;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #0f0;
+  text-shadow: 0 0 5px #0f0;
+}
+
+input {
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-bottom: 1px solid #0f0;
+  color: #0f0;
+  font-size: 1rem;
+  font-family: inherit;
+  width: 100%;
+  padding: 10px 0;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0 0 10px #0f0;
+}
+
+#progress-container {
+  margin-top: 20px;
+  display: none;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background: rgba(0, 255, 0, 0.1);
+  border: 1px solid #0f0;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress {
+  width: 0%;
+  height: 100%;
+  background: #0f0;
+  animation: progress 3s linear infinite;
+}
+
+.progress-text {
+  margin-top: 10px;
+  text-align: center;
+  color: #0f0;
+  text-shadow: 0 0 5px #0f0;
+}
+
+@keyframes progress {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+#warning {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.warning-content {
+  background: #000;
+  border: 2px solid #f00;
+  padding: 20px;
+  text-align: center;
+  max-width: 90%;
+  width: 500px;
+  margin: 20px;
+  animation: warning-flicker 0.1s infinite;
+}
+
+.warning-content h2 {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  color: #f00;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #f00;
+}
+
+.warning-content p {
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  color: #f00;
+  margin-bottom: 10px;
+  text-shadow: 0 0 5px #f00;
+}
+
+.countdown {
+  margin-top: 20px;
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  color: #f00;
+  text-shadow: 0 0 10px #f00;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@keyframes warning-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 768px) {
+  #terminal-container {
+    padding: 10px;
+  }
+
+  .fun-input {
+    margin-top: 15px;
+  }
+
+  .input-group label {
+    font-size: 0.9rem;
+  }
+
+  input {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #terminal-container {
+    padding: 8px;
+  }
+
+  #terminal {
+    min-height: 150px;
+  }
+
+  .progress-bar {
+    height: 15px;
+  }
+
+  .progress-text {
+    font-size: 0.9rem;
+  }
+} 
