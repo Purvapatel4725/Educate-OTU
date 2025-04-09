@@ -39,10 +39,6 @@ Welcome to the most *educational* project you'll ever encounter! This is a satir
 
 Because sometimes, the best way to learn is through a good ol' fashioned prank! This project serves as a humorous reminder that there's no substitute for genuine learning and hard work.
 
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## 👩‍💻 Author
 
 Created with ❤️ (and a bit of mischief) by [Purva Patel](https://github.com/Purvapatel4725)
