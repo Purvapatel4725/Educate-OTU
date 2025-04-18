@@ -3,7 +3,6 @@
 <div align="center">
   <img src="https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif" alt="Gotcha!" width="300"/>
   
-  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
   [![Status: Complete](https://img.shields.io/badge/Status-Complete-brightgreen.svg)]()
   [![Humor Level: Dad Jokes](https://img.shields.io/badge/Humor%20Level-Dad%20Jokes-orange.svg)]()
 </div>
